@@ -5,12 +5,11 @@ const boxChangeHanlder = (event) => {
   if (event.target.checked) {
     event.target.nextElementSibling.classList.add('done');
     Task.tasks[targetID].completed = true;
-    Task.storageManagement(Task.tasks);
   } else if (!event.target.checked) {
     event.target.nextElementSibling.classList.remove('done');
     Task.tasks[targetID].completed = false;
-    Task.storageManagement(Task.tasks);
   }
+  Task.storageManagement(Task.tasks);
 };
 
 const completeTask = () => {

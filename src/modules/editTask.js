@@ -10,18 +10,12 @@ const editTask = (event) => {
     taskInput.removeAttribute('readonly');
     taskInput.focus();
 
-    const spanIcon = document.createElement('span');
-    const img = document.createElement('img');
+    const spanSaveIcon = createSaveIcon();
 
-    img.setAttribute('src', saveIcon);
-    img.setAttribute('alt', 'Save Icon');
-    img.classList.add('save-icon');
-
-    spanIcon.appendChild(img);
-    menuIcon.parentNode.insertAdjacentElement('afterbegin', spanIcon);
+    menuIcon.parentNode.insertAdjacentElement('afterbegin', spanSaveIcon);
     menuIcon.classList.add('hidden');
 
-    spanIcon.addEventListener('click', () => {
+    spanSaveIcon.addEventListener('click', () => {
       const task = Task.tasks.find((t) => t.index === parseInt(taskIndex, 10));
 
       if (task) {
@@ -31,9 +25,21 @@ const editTask = (event) => {
       Task.storageManagement(Task.tasks);
       taskInput.setAttribute('readonly', 'readonly');
       menuIcon.classList.remove('hidden');
-      spanIcon.classList.add('hidden');
+      spanSaveIcon.classList.add('hidden');
     });
   }
 };
+
+const createSaveIcon = () => {
+  const spanSaveIcon = document.createElement('span');
+  const img = document.createElement('img');
+
+  img.setAttribute('src', saveIcon);
+  img.setAttribute('alt', 'Save Icon');
+  img.classList.add('save-icon');
+
+  spanSaveIcon.appendChild(img);
+  return spanSaveIcon;
+}
 
 export default editTask;
