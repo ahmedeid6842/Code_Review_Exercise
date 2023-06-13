@@ -1,6 +1,18 @@
 import Task from './Task.js';
 import saveIcon from '../img/save-icon.svg';
 
+const createSaveIcon = () => {
+  const spanSaveIcon = document.createElement('span');
+  const img = document.createElement('img');
+
+  img.setAttribute('src', saveIcon);
+  img.setAttribute('alt', 'Save Icon');
+  img.classList.add('save-icon');
+
+  spanSaveIcon.appendChild(img);
+  return spanSaveIcon;
+};
+
 const editTask = (event) => {
   if (event.target.classList.contains('menu-icon')) {
     const taskIndex = event.target.parentNode.parentNode.className.split(' ')[1];
@@ -29,17 +41,5 @@ const editTask = (event) => {
     });
   }
 };
-
-const createSaveIcon = () => {
-  const spanSaveIcon = document.createElement('span');
-  const img = document.createElement('img');
-
-  img.setAttribute('src', saveIcon);
-  img.setAttribute('alt', 'Save Icon');
-  img.classList.add('save-icon');
-
-  spanSaveIcon.appendChild(img);
-  return spanSaveIcon;
-}
 
 export default editTask;
